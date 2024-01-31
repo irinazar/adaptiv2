@@ -1,0 +1,852 @@
+@import "../nullstyle";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+
+body {
+  font-family: Montserrat;
+  color: #252b42;
+  font-size: 14px;
+  font-weight: 500;
+  background: #fafafa;
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden; //! добавляетя чтобы скрывать лишнее, чтобы не появлялась полоса скролла
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  padding: 0 15px;
+  max-width: 1046px;
+  margin: 0 auto;
+  box-sizing: content-box; //! делает бокс с внешними паддингами, не уменьшаяя пространство контейнера
+}
+
+.ibg {
+  //! техническая конструкция для вставки картинки фоном
+
+  position: relative;
+
+  & img {
+    //! техническая конструкция для вставки картинки фоном
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+}
+
+//? ШАПКА
+.header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    min-height: 104px;
+    align-items: center;
+    @media (max-width: 479px) {
+      min-height: 70px;
+    }
+  }
+
+  &__logo {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: inherit;
+  }
+
+  &__menu {
+    margin: 0 0 0 133px;
+    @media (max-width: 992px) {
+      margin: 0 0 0 80px;
+    }
+  }
+}
+
+.menu {
+  padding: 5px 0;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    margin: 0 21px 0 0;
+  }
+
+  &__link {
+    color: #737373;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    @media (max-width: 479px) {
+      font-size: 18px;
+    }
+  }
+}
+
+//? Главная
+
+.page {
+  flex: 1 1 auto;
+
+  &__main-block {
+    position: relative;
+  }
+}
+.main-block {
+  position: relative;
+
+  &__container {
+  }
+
+  &__body {
+    padding: 184px 0 191px 0;
+    position: relative;
+    z-index: 2;
+    max-width: 400px;
+    & > *:not(:last-child) {
+      margin: 0 0 35px 0;
+    } //! ко всем объектам первого уровня кроме последнего
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 58px;
+    line-height: 80px;
+  }
+
+  &__text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #737373;
+  }
+
+  &__buttons {
+    display: inline-flex;
+  }
+
+  &__button {
+    background: #ff7b47;
+    border-radius: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 36px;
+    min-height: 48px;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 28px;
+    &:not(:last-child) {
+      margin: 0 10px 0 0;
+    }
+    &_border {
+      border: 1px solid #0d5c63;
+      background: none;
+      color: #0d5c63;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    & img {
+      @media (max-width: 1300px) {
+        object-position: right;
+        opacity: 0.3;
+      }
+    }
+  }
+}
+
+//? ТРИ КОЛОНКИ
+.page {
+  &__services {
+    position: relative;
+    z-index: 2;
+    margin: -111px 0 0 0; //! именно такой способ подтянет остальные блоки за колонками которые НАВИСАЮТ НАД ГЛАВНЫМ БЛОКОМ
+  }
+}
+.services {
+  &__container {
+  }
+
+  &__body {
+    flex-wrap: wrap;
+    display: flex;
+    margin: 0 -15px; //! чтобы раздвинуть колонки в стороны
+    @media (max-width: 670px) {
+      display: inline-block;
+      width: 100%;
+      margin: 0 -15px 0 0;
+    }
+  }
+
+  &__column {
+    flex: 0 1 33.333%;
+    padding: 0 15px; //! чтобы раздвинуть колонки в стороны
+    &:last-child {
+      @media (max-width: 992px) {
+        flex: 0 1 100%;
+      }
+    }
+    @media (max-width: 992px) {
+      flex: 0 1 50%;
+      margin: 0 0 30px 0;
+    }
+  }
+
+  &__item {
+    height: 100%; //! позволит контенту подстраиваться под флекс колонку и растягивать ее
+    padding: 35px;
+    background: #ffffff;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+  }
+}
+
+.item-service {
+  & > *:not(:last-child) {
+    margin: 0 0 10px 0;
+  }
+
+  &__icon {
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.1px;
+    color: #252b42;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #737373;
+  }
+
+  &__green {
+    background: #0d5c63;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+  }
+}
+
+.item-service__green .item-service__title {
+  color: white;
+}
+
+.item-service__green .item-service__text {
+  color: white;
+}
+
+//? ТРЕТИЙ БЛОК
+
+.page {
+  &__advantages {
+  }
+}
+.advantages {
+  padding: 80px 0;
+
+  &_value {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 57px;
+    letter-spacing: 0.2px;
+    color: #252b42;
+  }
+
+  &__container {
+  }
+
+  &__header {
+    margin: 0 0 50px 0;
+  }
+
+  &__body {
+    display: flex;
+    margin: 0 -15px;
+    flex-wrap: wrap;
+  }
+
+  &__column {
+    flex: 0 1 25%;
+    padding: 0 15px;
+    @media (max-width: 1000px) {
+      flex: 0 1 50%;
+      margin: 0 0 30px 0;
+    }
+    @media (max-width: 560px) {
+      flex: 0 1 100%;
+      margin: 0 0 15px 0;
+    }
+  }
+
+  &__item {
+    background-color: #fff;
+    padding: 35px;
+    text-align: center;
+    & > *:not(:last-child) {
+      margin: 0 0 10px 0;
+    }
+  }
+
+  &__icon {
+    height: 48px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+  } //! прибивает иконки к низу и выравнивает их по одной оси
+
+  &__text {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #737373;
+  }
+}
+.container {
+}
+
+.header-block {
+  text-align: center;
+
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 57px;
+    letter-spacing: 0.2px;
+    color: #252b42;
+    margin: 0 0 10px 0;
+  }
+
+  &__subtitle {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #737373;
+  }
+}
+
+//? ЧЕТВЕРТЫЙ БЛОК
+
+.page {
+  &__practice {
+  }
+}
+.practice {
+  padding: 125px 0 80px 0;
+
+  &__container {
+  }
+
+  &__header {
+    margin: 0 0 45px 0;
+  }
+
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+  }
+
+  &__column {
+    flex: 0 1 25%;
+    padding: 0 15px;
+    @media (max-width: 1050px) {
+      flex: 0 1 50%;
+    }
+    @media (max-width: 630px) {
+      flex: 0 1 100%;
+      margin: 0 0 30px 0;
+    }
+  }
+
+  &__item {
+  }
+}
+
+.item-practice {
+  background-color: white;
+  display: flex; //! конструкция для того чтобы прижать картинку к низу и раздвинуть контент
+  flex-direction: column; //! конструкция для того чтобы прижать картинку к низу и раздвинуть контент
+  height: 100%; //! конструкция для того чтобы прижать картинку к низу и раздвинуть контент
+
+  &__content {
+    padding: 30px;
+    flex: 1 1 auto; //! конструкция для того чтобы прижать картинку к низу и раздвинуть контент
+  }
+
+  &__link {
+    display: inline-block;
+    & :hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: #252b42;
+    margin: 0 0 15px 0;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #737373;
+  }
+
+  &__image {
+    display: block;
+    padding: 0 0 60% 0;
+  }
+}
+
+//? ПЯТЫЙ БЛОК
+
+.page {
+  &__whoweare {
+  }
+}
+.whoweare {
+  padding: 80px 0 130px 0;
+  background-color: white;
+
+  &_video {
+    flex: 0 0 57%; //! посчитали ширину блока с видео в процентах, разделив ширину блока видео на ширину ограниченного контейнера 1046 умножить на 100%
+    position: relative;
+    padding: 0 0 42.25% 0;
+
+    & iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &__container {
+  }
+
+  &__header {
+    margin: 0 0 100px 0;
+  }
+
+  &__body {
+    display: flex;
+    @media (max-width: 950px) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__content {
+    flex: 1 1 auto;
+    margin: 0 0 0 121px;
+    @media (max-width: 1080px) {
+      margin: 0 0 0 50px;
+    }
+    @media (max-width: 950px) {
+      margin: 0;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 57px;
+    letter-spacing: 0.2px;
+    color: #252b42;
+    margin: 0 0 10px 0;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #737373;
+    margin: 0 0 50px 0;
+  }
+
+  &__items {
+  }
+
+  &__item {
+    margin: 0 0 30px 0;
+    &:last-child {
+      margin: 0;
+      @media (max-width: 950px) {
+        margin: 0 0 30px 0;
+      }
+    }
+  }
+}
+
+.item-whoweare {
+  display: flex;
+
+  &__icon {
+    flex: 0 0 32px;
+  }
+
+  &__body {
+    padding: 0 0 0 20px;
+    flex: 1 1 auto;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: #252b42;
+    margin: 0 0 5px 0;
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #737373;
+  }
+}
+
+//? ШЕСТОЙ БЛОК
+
+.page {
+  &__clients {
+    margin: 0 0 10px 0;
+  }
+
+  &__container {
+  }
+}
+.clients {
+  padding: 50px 0;
+
+  &__items {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    padding: 4px 15px;
+    flex: 0 1 16.6667%;
+    text-align: center;
+  }
+}
+
+//? СЕДЬМОЙ
+
+.page {
+  &__sucscribe {
+  }
+}
+.sucscribe {
+  padding: 0 0 20px 0; //! отодвинуть плашку от псевдоэлеента на 20px
+  position: relative;
+  &::before {
+    content: "";
+    background: #252b42;
+    position: absolute;
+    width: 100%;
+    height: 77px;
+    bottom: 0;
+  }
+
+  &__container {
+  }
+
+  &__body {
+    margin: 0 30px;
+    display: flex;
+    background: #17213c;
+    border-radius: 2px;
+    padding: 30px 50px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    flex-wrap: wrap;
+    @media (max-width: 800px) {
+      padding: 20px;
+      margin: 0 -15px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.1px;
+    color: #ffffff;
+    max-width: 266px;
+    @media (max-width: 800px) {
+      margin: 0 0 20px 0;
+    }
+  }
+
+  &__form {
+    flex: 0 1 50%;
+    display: flex;
+    align-items: center;
+    @media (max-width: 600px) {
+      flex: 0 1 100%;
+    }
+  }
+
+  &__input {
+    flex: 1 1 auto;
+    min-height: 58px;
+    background: #f9f9f9;
+    border: 1px solid #e6e6e6;
+    border-right: 0;
+    border-radius: 5px 0 0 5px;
+    padding: 0 20px;
+    color: #e6e6e6;
+    &:focus {
+      color: black;
+    }
+    @media (max-width: 600px) {
+      flex: 0 1 100%;
+    }
+  }
+
+  &__button {
+    background: #ff7b47;
+    border: 1px solid #e6e6e6;
+    border-radius: 0px 5px 5px 0px;
+    min-height: 58px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: white;
+    padding: 0 22px;
+  }
+}
+
+//? ВОСЬМОЙ
+
+.page {
+  &__getintouch {
+  }
+}
+.getintouch {
+  background: #f3f3f3;
+
+  padding: 80px 0 136px 0;
+
+  &__container {
+  }
+
+  &__header {
+    margin: 0 0 80px 0;
+  }
+
+  &__items {
+    display: flex;
+    align-items: center;
+    @media (max-width: 992px) {
+      display: block;
+      margin: -15px;
+    }
+  }
+
+  &__item {
+    flex: 0 1 33.333%;
+  }
+}
+
+.header-block {
+  &__title {
+  }
+
+  &__subtitle {
+  }
+}
+.item-getintouch {
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  & > *:not(:last-child) {
+    margin: 0 0 15px 0;
+  }
+
+  &__icon {
+  }
+
+  &__emails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    :hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__email {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #252b42;
+  }
+
+  &__label {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #252b42;
+  }
+
+  &__button {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #ff7b47;
+    padding: 10px 20px;
+    display: block;
+    border: 1px solid #ff7b47;
+    border-radius: 5px;
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+      background-color: #ff7b47;
+      color: white;
+    }
+  }
+
+  &__active {
+    background-color: #252b42;
+    color: white;
+    padding: 80px 40px;
+  }
+}
+
+.item-getintouch__active .item-getintouch__email {
+  color: white;
+}
+
+.item-getintouch__active .item-getintouch__label {
+  color: white;
+}
+
+.item-getintouch__active .item-getintouch__button {
+  color: white;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
+//?ДЕВЯТЫЙ
+
+.page {
+  &__contact {
+  }
+}
+.contact {
+  padding: 40px 0;
+  background: #fafafa;
+
+  &_container {
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 800px) {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  &__content {
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.1px;
+    color: #252b42;
+    margin: 0 0 10px 0;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #737373;
+    @media (max-width: 800px) {
+      margin: 0 0 10px 0;
+    }
+  }
+
+  &__button {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 28px;
+    display: block;
+    color: white;
+    padding: 15px 40px;
+    background: #ff7b47;
+    border-radius: 5px;
+    transition: all 0.5s ease 0s;
+    &:hover {
+      color: #ff7b47;
+      background-color: #fff;
+      color: #ff7b47;
+      border: 1px solid;
+      border-radius: 5px;
+    }
+  }
+}
+
+//? ПОДВАЛ
+
+.footer {
+}
